@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.simplilearn.domain.Account;
+import com.simplilearn.domain.Customer;
+import com.simplilearn.domain.User;
 import com.simplilearn.repository.AccountRepository;
 
 @Service
@@ -14,6 +16,8 @@ public class AccountServiceImpl implements AccountService {
 	
 	@Autowired
 	private AccountRepository accountRepository;
+	@Autowired
+	private CustomerService customerService;
 
 	@Override
 	public List<Account> findAll() {
@@ -21,10 +25,19 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
-	public List<Account> save(Account account) {
-		accountRepository.save(account);
+	public Account save(Account account, String userId) {
+		Optional<Customer> customerOptional = customerService.getById(Long.parseLong(userId));
+		if(customerOptional.isPresent()) {
+			Customer savedCustomer = customerOptional.get();
+			if(savedCustomer!=null) {
+				account.setCustomer(savedCustomer);
+				Account savedaccount = accountRepository.save(account);
+				return savedaccount;
+			}
+			
+		}
+		return null;
 		
-		return findAll();
 	}
 
 	@Override

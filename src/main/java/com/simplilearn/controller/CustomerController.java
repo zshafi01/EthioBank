@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,16 +16,28 @@ import com.simplilearn.domain.Customer;
 import com.simplilearn.service.CustomerService;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class CustomerController {
 	@Autowired
 	private CustomerService customerService;
 
-	@RequestMapping(path = "/addcustomer", method = RequestMethod.POST)
-	public List<Customer> save(@RequestBody Customer customer){
+	@RequestMapping(path = "/addcustomer/{userId}", method = RequestMethod.POST)
+	public Customer save(@PathVariable("userId") String userId,  @RequestBody Customer customer){
 		
-		return customerService.save(customer);
+		return customerService.save(customer,userId);
 		
 	}
+	
+	@GetMapping("/customer/{id}")  
+	public Optional<Customer> getCustomerById(@PathVariable("id") long id)   
+	{  
+	return customerService.getById(id);  
+	}  
+	@GetMapping("/customers")  
+	public List<Customer> getAllCustomer(@PathVariable("id") long id)   
+	{  
+	return customerService.findAll();  
+	}  
 	@RequestMapping(path = "/customer/{id}",method = RequestMethod.DELETE)
 	public void deleteCustomer(@PathVariable("id") long id)   
 	{  
@@ -37,15 +50,6 @@ public class CustomerController {
 		customerService.updatecustomer(customer, id); 
 	return customer;  
 	} 
-	@GetMapping("/customer/{id}")  
-	public Optional<Customer> getCustomerById(@PathVariable("id") long id)   
-	{  
-	return customerService.getById(id);  
-	}  
-	@GetMapping("/customers")  
-	public List<Customer> getAllCustomer(@PathVariable("id") long id)   
-	{  
-	return customerService.findAll();  
-	}  
+	
 
 }

@@ -22,6 +22,7 @@ public class Account {
 	private String types;
 	private double balance;
 	private Date date;
+
 	
 	@OneToOne(mappedBy = "account")
 	ChequeBookRequest chequeBookRequest;
@@ -34,46 +35,74 @@ public class Account {
 		super();
 	}
 	
-	
-	public Account(long id, String accountNumber, String types, double balance, Date date) {
+	public Account(long id, String accountNumber, String types, double balance, Date date, 
+			ChequeBookRequest chequeBookRequest, Customer customer) {
 		super();
+		this.id = id;
 		this.accountNumber = accountNumber;
 		this.types = types;
 		this.balance = balance;
 		this.date = date;
+		this.chequeBookRequest = chequeBookRequest;
+		this.customer = customer;
 	}
-
 
 	public long getId() {
 		return id;
 	}
+
 	public void setId(long id) {
 		this.id = id;
 	}
+
 	public String getAccountNumber() {
 		return accountNumber;
 	}
+
 	public void setAccountNumber(String accountNumber) {
 		this.accountNumber = accountNumber;
 	}
+
 	public String getTypes() {
 		return types;
 	}
+
 	public void setTypes(String types) {
 		this.types = types;
 	}
+
 	public double getBalance() {
 		return balance;
 	}
+
 	public void setBalance(double balance) {
 		this.balance = balance;
 	}
+
 	public Date getDate() {
 		return date;
 	}
+
 	public void setDate(Date date) {
 		this.date = date;
 	}
 
-	
+	public ChequeBookRequest getChequeBookRequest() {
+		return chequeBookRequest;
+	}
+
+	public void setChequeBookRequest(ChequeBookRequest chequeBookRequest) {
+		this.chequeBookRequest = chequeBookRequest;
+	}
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
+
+
 }

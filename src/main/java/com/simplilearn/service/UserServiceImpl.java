@@ -40,5 +40,24 @@ public class UserServiceImpl implements UserService {
 	public Optional<User> getById(long id) {
 		return userRepository.findById(id);
 	}
+	public List<User> getByEmail(String email){
+		
+		return  userRepository.getByemail(email);
+	}
+
+	@Override
+	public User verifyUser(User user) {
+		List<User> users = getByEmail(user.getEmail());
+		if(users==null || users.isEmpty()) {
+			return null;
+		}
+		User userfound = users.get(0);
+		if (userfound!=null && userfound.getPassword().equals(user.getPassword())) {
+			return userfound;
+		}else {
+			return null;
+		}
+		
+	}
 
 }

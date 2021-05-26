@@ -7,7 +7,7 @@ import com.simplilearn.domain.Account;
 
 public interface AccountService {
 	List<Account> findAll();
-	List<Account> save(Account account);
+	Account save(Account account, String userId);
 	void updateAccount(Account account, long id);
 	void deleteAccount(long id);
 	public Optional<Account> getById(long id);

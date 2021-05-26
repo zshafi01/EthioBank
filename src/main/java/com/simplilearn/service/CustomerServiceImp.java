@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.simplilearn.domain.Customer;
+import com.simplilearn.domain.User;
 import com.simplilearn.repository.CustomerRepository;
 
 @Service
@@ -15,6 +16,10 @@ public class CustomerServiceImp implements CustomerService {
 	
 	@Autowired
 	private CustomerRepository customerRepository;
+	
+	@Autowired
+	private UserService userService;
+	
 	@Override
 	public List<Customer> findAll() {
 		// TODO Auto-generated method stub
@@ -22,9 +27,20 @@ public class CustomerServiceImp implements CustomerService {
 	}
 
 	@Override
-	public List<Customer> save(Customer customer) {
-		customerRepository.save(customer);
-		return findAll();
+	public Customer save(Customer customer,String userId) {
+		
+		Optional<User> userOptional = userService.getById(Long.parseLong(userId));
+		if(userOptional.isPresent()) {
+			User savedUser = userOptional.get();
+			if(savedUser!=null) {
+				customer.setUser(savedUser);
+				Customer savedCustomer = customerRepository.save(customer);
+				return savedCustomer;
+			}
+			
+		}
+		return null;
+		
 	}
 
 	@Override

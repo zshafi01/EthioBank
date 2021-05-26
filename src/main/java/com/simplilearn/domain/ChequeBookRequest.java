@@ -22,12 +22,6 @@ public class ChequeBookRequest {
 	@OneToOne
     @JoinColumn(name = "account_id", referencedColumnName = "id")
 	private Account account;
-	
-	
-
-//	@JoinColumn(name="accountId", referencedColumnName = "chequeId")
-	
-
 	private String description;
 	private boolean isApproved;
 	public ChequeBookRequest() {

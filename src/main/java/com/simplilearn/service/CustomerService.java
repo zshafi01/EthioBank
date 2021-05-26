@@ -8,7 +8,7 @@ import com.simplilearn.domain.Customer;
 public interface CustomerService {
 	
 	List<Customer> findAll();
-	List<Customer> save(Customer customer);
+	Customer save(Customer customer, String userId);
 	void updatecustomer(Customer customer, long id);
 	void deletecustomer(long id);
 	public Optional<Customer> getById(long id);

@@ -16,7 +16,6 @@ public class RecipentsServiceImpl implements RecipentsService {
 	private RecipentsRepository recipentsRepository;
 	@Override
 	public List<Recipents> findAll() {
-		// TODO Auto-generated method stub
 		return (List<Recipents>) recipentsRepository.findAll();
 	}
 
@@ -38,7 +37,6 @@ public class RecipentsServiceImpl implements RecipentsService {
 
 	@Override
 	public Optional<Recipents> getById(long id) {
-		// TODO Auto-generated method stub
 		return recipentsRepository.findById(id);
 	}
 

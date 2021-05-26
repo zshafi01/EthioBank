@@ -12,5 +12,6 @@ public interface UserService {
 	void updateUser(User user, long id);
 	void deleteUser(long id);
 	public Optional<User> getById(long id);
+	User verifyUser(User user);
 
 }
