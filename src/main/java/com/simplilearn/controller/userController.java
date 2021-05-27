@@ -23,16 +23,22 @@ public class userController {
 	private UserService userService;
 	
 	@RequestMapping(path = "/adduser", method = RequestMethod.POST)
-	public List<User> save(@RequestBody User user){
+	public User save(@RequestBody User user){
 		
 		return userService.save(user);
 		
 	}
-	@RequestMapping(path = "/login", method = RequestMethod.POST,produces = { "application/json" })
+//	@RequestMapping(path = "/login", method = RequestMethod.POST,produces = { "application/json" })
+//	public User login(@RequestBody User user){
+//		
+//		 User verifyUser = userService.verifyUser(user);
+//		 return verifyUser;
+//		
+//	}
+	
+	@RequestMapping(path = "/login", method = RequestMethod.POST)
 	public User login(@RequestBody User user){
-		
-		 User verifyUser = userService.verifyUser(user);
-		 return verifyUser;
+		 return userService.verifyUser(user);
 		
 	}
 	

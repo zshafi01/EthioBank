@@ -22,6 +22,7 @@ public class User {
 	private Customer customer;
 	
 	
+	
 	public User() {
 		super();
 	}

@@ -22,11 +22,8 @@ public class Account {
 	private String types;
 	private double balance;
 	private Date date;
-
-	
 	@OneToOne(mappedBy = "account")
 	ChequeBookRequest chequeBookRequest;
-	
 	@ManyToOne
     @JoinColumn(name="customer_id", nullable=false)
 	private Customer customer;

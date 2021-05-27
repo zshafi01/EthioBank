@@ -22,11 +22,11 @@ public class TransferController {
 	
 	@Autowired
 	private TransferService transferService;
-	@RequestMapping(path = "/addtransfer", method = RequestMethod.POST)
-	public List<Transfer> save(@RequestBody Transfer transfer){
+	@RequestMapping(path = "/addtransfer/{userId}", method = RequestMethod.POST)
+	public Transfer save(@PathVariable("userId") String userId,  @RequestBody Transfer transfer){
 		
-		return transferService.save(transfer);
-		
+		return transferService.save(transfer, userId);
+	
 	}
 	@RequestMapping(path = "/transfer/{id}",method = RequestMethod.DELETE)
 	public void deleteTransfer(@PathVariable("id") long id)   

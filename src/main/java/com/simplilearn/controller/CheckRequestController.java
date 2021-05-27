@@ -16,7 +16,7 @@ import com.simplilearn.domain.ChequeBookRequest;
 import com.simplilearn.service.ChequeBookRequestSevice;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200")
 public class CheckRequestController {
 	@Autowired
 	private ChequeBookRequestSevice chequeBookRequestSevice;

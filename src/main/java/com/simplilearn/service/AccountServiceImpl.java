@@ -1,5 +1,6 @@
 package com.simplilearn.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -8,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import com.simplilearn.domain.Account;
 import com.simplilearn.domain.Customer;
-import com.simplilearn.domain.User;
 import com.simplilearn.repository.AccountRepository;
 
 @Service
@@ -26,6 +26,9 @@ public class AccountServiceImpl implements AccountService {
 
 	@Override
 	public Account save(Account account, String userId) {
+		account.setChequeBookRequest(null);
+		account.setDate(new Date());
+		
 		Optional<Customer> customerOptional = customerService.getById(Long.parseLong(userId));
 		if(customerOptional.isPresent()) {
 			Customer savedCustomer = customerOptional.get();

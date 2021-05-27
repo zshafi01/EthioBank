@@ -21,9 +21,9 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public List<User> save(User user) {
-		userRepository.save(user);
-		return findAll();
+	public User save(User user) {
+		User saveduser= userRepository.save(user);
+		return saveduser;
 	}
 
 	@Override
@@ -48,7 +48,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User verifyUser(User user) {
 		List<User> users = getByEmail(user.getEmail());
-		if(users==null || users.isEmpty()) {
+		if(users==null||users.isEmpty()) {
 			return null;
 		}
 		User userfound = users.get(0);
@@ -60,4 +60,5 @@ public class UserServiceImpl implements UserService {
 		
 	}
 
-}
+	
+	}

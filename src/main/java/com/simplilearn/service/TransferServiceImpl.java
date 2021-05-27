@@ -6,7 +6,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.simplilearn.domain.Customer;
 import com.simplilearn.domain.Transfer;
+import com.simplilearn.domain.User;
 import com.simplilearn.repository.TransferRepository;
 
 @Service
@@ -14,15 +16,29 @@ public class TransferServiceImpl implements TransferService {
 
 	@Autowired
 	private TransferRepository transferRepository;
+	@Autowired
+	private UserService userService;
+	
+	@Autowired
+	private CustomerService customerService;
 	@Override
 	public List<Transfer> findAll() {
 		return (List<Transfer>) transferRepository.findAll();
 	}
 
 	@Override
-	public List<Transfer> save(Transfer transfer) {
-		transferRepository.save(transfer);
-		return findAll();
+	public Transfer save(Transfer transfer, String userId) {
+		Optional<Customer> customerOptional = customerService.getById(Long.parseLong(userId));
+		if(customerOptional.isPresent()) {
+			Customer savedCustomer = customerOptional.get();
+			if(savedCustomer!=null) {
+				transfer.setCustomerid(savedCustomer.getId()+"");
+				Transfer savedTransfer = transferRepository.save(transfer);
+				return savedTransfer;
+			}
+			
+		}
+		return null;
 	}
 
 	@Override

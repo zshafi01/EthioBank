@@ -25,7 +25,6 @@ public class Recipents {
 	
 	public Recipents() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	

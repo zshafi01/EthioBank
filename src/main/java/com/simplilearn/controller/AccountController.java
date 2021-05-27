@@ -17,7 +17,7 @@ import com.simplilearn.domain.Account;
 import com.simplilearn.service.AccountService;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200")
 public class AccountController {
 	@Autowired
 	private AccountService accountService;
@@ -25,8 +25,7 @@ public class AccountController {
 
 	@RequestMapping(path = "/addaccount/{userId}", method = RequestMethod.POST)
 	public Account save(@PathVariable("userId") String userId,  @RequestBody Account account){
-		account.setChequeBookRequest(null);
-		account.setDate(new Date());
+
 //		account.setCustomer(null);
 		
 		return accountService.save(account, userId);
