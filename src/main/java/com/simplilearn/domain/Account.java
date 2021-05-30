@@ -21,7 +21,10 @@ public class Account {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private String accountNumber;
+	private String accountTypes;
 	private String types;
+	private String description;
+
 	private double balance;
 	private Date date;
 	@OneToOne(mappedBy = "account")
@@ -34,13 +37,15 @@ public class Account {
 	public Account() {
 		super();
 	}
-	
-	public Account(long id, String accountNumber, String types, double balance, Date date, 
-			ChequeBookRequest chequeBookRequest, Customer customer) {
+
+	public Account(long id, String accountNumber, String accountTypes, String types, String description, double balance,
+			Date date, ChequeBookRequest chequeBookRequest, Customer customer) {
 		super();
 		this.id = id;
 		this.accountNumber = accountNumber;
+		this.accountTypes = accountTypes;
 		this.types = types;
+		this.description = description;
 		this.balance = balance;
 		this.date = date;
 		this.chequeBookRequest = chequeBookRequest;
@@ -63,12 +68,28 @@ public class Account {
 		this.accountNumber = accountNumber;
 	}
 
+	public String getAccountTypes() {
+		return accountTypes;
+	}
+
+	public void setAccountTypes(String accountTypes) {
+		this.accountTypes = accountTypes;
+	}
+
 	public String getTypes() {
 		return types;
 	}
 
 	public void setTypes(String types) {
 		this.types = types;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public double getBalance() {
@@ -102,7 +123,6 @@ public class Account {
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
+	
 
-
-
-}
+	}

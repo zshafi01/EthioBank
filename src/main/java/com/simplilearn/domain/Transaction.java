@@ -1,5 +1,6 @@
 package com.simplilearn.domain;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -24,11 +25,12 @@ public class Transaction {
 	public Transaction() {
 		super();
 	}
-	public Transaction(long id, long accountId,String customerId, Date date, String description, String type, String amount, String balance) {
+	public Transaction(long id, String customerId, long accountId, Date date, String description, String type,
+			String amount, String balance) {
 		super();
 		this.id = id;
 		this.customerId = customerId;
-		this.accountId=accountId;
+		this.accountId = accountId;
 		this.date = date;
 		this.description = description;
 		this.type = type;
@@ -41,14 +43,12 @@ public class Transaction {
 	public void setId(long id) {
 		this.id = id;
 	}
-	
 	public String getCustomerId() {
 		return customerId;
 	}
 	public void setCustomerId(String customerId) {
 		this.customerId = customerId;
 	}
-	
 	public long getAccountId() {
 		return accountId;
 	}
@@ -85,6 +85,6 @@ public class Transaction {
 	public void setBalance(String balance) {
 		this.balance = balance;
 	}
-
-
+	
+	
 }

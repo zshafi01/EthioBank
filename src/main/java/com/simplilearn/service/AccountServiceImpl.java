@@ -78,29 +78,39 @@ public class AccountServiceImpl implements AccountService {
 			account.setBalance(account.getBalance()+amount);
 			accountRepository.save(account);
 			transaction.setDate(new Date());
-//			transaction.setDescription(account.g);
+			transaction.setDescription(account.getDescription());
 			transaction.setCustomerId(account.getCustomer().getId()+"");
 			transaction.setAccountId(account.getId());
 			transaction.setType(account.getTypes());
-			transaction.setAmount("+"+Double.toString (amount));
+			transaction.setAmount("+"+ Double.toString (amount));
 			transaction.setBalance(Double.toString (account.getBalance()));
 			transactionRepository.save(transaction);
 		}
-	}
+
+//			transaction.setDate(account.new Date());
+////			transaction.setDescription(account.g);
+//			transaction.setCustomerId(account.getCustomer().getId()+"");
+//			transaction.setAccountId(account.getId());
+//			transaction.setType(account.getTypes());
+//			transaction.setAmount("+"+Double.toString (amount));
+//			transaction.setBalance(Double.toString (account.getBalance()));
+//			transactionRepository.save(transaction);
+		}
+	
 
 	@Override
 	public void withdrawl(long accountId, double amount) {
 		Optional<Account> findById = accountRepository.findById(accountId);
 		if(findById.isPresent()) {
 			Account account = findById.get();
-			account.setBalance(account.getBalance() -amount);
+			account.setBalance(account.getBalance()- amount);
 			accountRepository.save(account);
 			transaction.setDate(new Date());
-//			transaction.setDescription(account.g);
+			transaction.setDescription(account.getDescription());
 			transaction.setCustomerId(account.getCustomer().getId()+"");
 			transaction.setAccountId(account.getId());
 			transaction.setType(account.getTypes());
-			transaction.setAmount("-"+Double.toString (amount));
+			transaction.setAmount("-"+ Double.toString (amount));
 			transaction.setBalance(Double.toString (account.getBalance()));
 			transactionRepository.save(transaction);
 		}
