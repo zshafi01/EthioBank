@@ -12,4 +12,5 @@ public interface CustomerService {
 	void updatecustomer(Customer customer, long id);
 	void deletecustomer(long id);
 	public Optional<Customer> getById(long id);
+	public Customer getCustomerByUserId(String id);
 }

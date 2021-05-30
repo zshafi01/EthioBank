@@ -28,6 +28,16 @@ public class CustomerController {
 		
 	}
 	
+	@GetMapping("/customerUserId/{userId}")  
+	public Customer getCustomerByUserId(@PathVariable("userId") long userId)   
+	{  
+	return customerService.getCustomerByUserId(userId+"");  
+	}
+	
+	
+	
+	
+	//not used
 	@GetMapping("/customer/{id}")  
 	public Optional<Customer> getCustomerById(@PathVariable("id") long id)   
 	{  

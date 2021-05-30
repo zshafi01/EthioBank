@@ -1,16 +1,16 @@
-2021-05-26 22:51:53,819 INFO o.s.b.StartupInfoLogger [main] Starting EthioBankApplication using Java 15.0.2 on DESKTOP-T16AJK5 with PID 36112 (C:\Users\biliy\Documents\workspace-spring-tool-suite-4-4.10.0.RELEASE\EthioBank\target\classes started by biliy in C:\Users\biliy\Documents\workspace-spring-tool-suite-4-4.10.0.RELEASE\EthioBank)
-2021-05-26 22:51:53,831 INFO o.s.b.SpringApplication [main] No active profile set, falling back to default profiles: default
-2021-05-26 22:51:55,192 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8081"]
-2021-05-26 22:51:55,195 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
-2021-05-26 22:51:55,196 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.45]
-2021-05-26 22:51:55,299 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
-2021-05-26 22:51:55,485 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
-2021-05-26 22:51:55,545 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 5.4.30.Final
-2021-05-26 22:51:55,695 INFO o.h.a.c.r.j.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2021-05-26 22:51:55,818 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
-2021-05-26 22:51:56,019 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
-2021-05-26 22:51:56,035 INFO o.h.d.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
-2021-05-26 22:51:57,329 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2021-05-26 22:51:58,180 INFO o.a.j.l.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8081"]
-2021-05-26 22:51:58,217 INFO o.s.b.StartupInfoLogger [main] Started EthioBankApplication in 4.961 seconds (JVM running for 6.21)
-2021-05-26 22:53:57,005 INFO o.a.j.l.DirectJDKLog [http-nio-8081-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-05-29 20:34:59,016 INFO o.s.b.StartupInfoLogger [main] Starting EthioBankApplication using Java 15.0.2 on DESKTOP-T16AJK5 with PID 10292 (C:\Users\biliy\Documents\workspace-spring-tool-suite-4-4.10.0.RELEASE\EthioBank\target\classes started by biliy in C:\Users\biliy\Documents\workspace-spring-tool-suite-4-4.10.0.RELEASE\EthioBank)
+2021-05-29 20:34:59,026 INFO o.s.b.SpringApplication [main] No active profile set, falling back to default profiles: default
+2021-05-29 20:35:00,700 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8081"]
+2021-05-29 20:35:00,702 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2021-05-29 20:35:00,702 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.45]
+2021-05-29 20:35:00,832 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2021-05-29 20:35:01,119 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-05-29 20:35:01,209 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 5.4.30.Final
+2021-05-29 20:35:01,421 INFO o.h.a.c.r.j.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-05-29 20:35:01,566 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2021-05-29 20:35:01,776 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2021-05-29 20:35:01,803 INFO o.h.d.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2021-05-29 20:35:02,962 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-05-29 20:35:04,081 INFO o.a.j.l.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8081"]
+2021-05-29 20:35:04,125 INFO o.s.b.StartupInfoLogger [main] Started EthioBankApplication in 5.721 seconds (JVM running for 6.972)
+2021-05-29 20:35:05,320 INFO o.a.j.l.DirectJDKLog [RMI TCP Connection(3)-127.0.0.1] Initializing Spring DispatcherServlet 'dispatcherServlet'

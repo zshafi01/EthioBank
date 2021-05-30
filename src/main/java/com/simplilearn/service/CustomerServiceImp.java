@@ -20,14 +20,21 @@ public class CustomerServiceImp implements CustomerService {
 	@Autowired
 	private UserService userService;
 	
+	
+	
 	@Override
 	public List<Customer> findAll() {
-		// TODO Auto-generated method stub
 		return (List<Customer>) customerRepository.findAll();
 	}
 
 	@Override
 	public Customer save(Customer customer, String userId) {
+		
+		Customer customerExisting = getCustomerByUserId(userId + "");
+		
+		if(customerExisting!=null ) {
+			return null;
+		}
 		
 		Optional<User> userOptional = userService.getById(Long.parseLong(userId));
 		if(userOptional.isPresent()) {
@@ -55,8 +62,17 @@ public class CustomerServiceImp implements CustomerService {
 
 	@Override
 	public Optional<Customer> getById(long id) {
-		// TODO Auto-generated method stub
+		
 		return customerRepository.findById(id);
+	}
+
+	@Override
+	public Customer getCustomerByUserId(String userId) {
+		List<Customer> customers = customerRepository.findByUserId(userId);
+		if(customers!=null && !customers.isEmpty()) {
+			return customers.get(0);
+		}
+		return null;
 	}
 
 }

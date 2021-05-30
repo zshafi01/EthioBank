@@ -11,6 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table
 public class Account {
@@ -26,6 +28,7 @@ public class Account {
 	ChequeBookRequest chequeBookRequest;
 	@ManyToOne
     @JoinColumn(name="customer_id", nullable=false)
+	@JsonIgnoreProperties("accounts")
 	private Customer customer;
 	
 	public Account() {

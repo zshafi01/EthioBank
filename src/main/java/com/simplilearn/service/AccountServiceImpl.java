@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 
 import com.simplilearn.domain.Account;
 import com.simplilearn.domain.Customer;
+import com.simplilearn.domain.Transaction;
 import com.simplilearn.repository.AccountRepository;
+import com.simplilearn.repository.TransactionRepository;
 
 @Service
 public class AccountServiceImpl implements AccountService {
@@ -18,6 +20,10 @@ public class AccountServiceImpl implements AccountService {
 	private AccountRepository accountRepository;
 	@Autowired
 	private CustomerService customerService;
+	@Autowired
+	private TransactionRepository transactionRepository;
+	
+	Transaction  transaction = new Transaction();
 
 	@Override
 	public List<Account> findAll() {
@@ -29,19 +35,18 @@ public class AccountServiceImpl implements AccountService {
 		account.setChequeBookRequest(null);
 		account.setDate(new Date());
 		
-		Optional<Customer> customerOptional = customerService.getById(Long.parseLong(userId));
-		if(customerOptional.isPresent()) {
-			Customer savedCustomer = customerOptional.get();
-			if(savedCustomer!=null) {
-				account.setCustomer(savedCustomer);
-				Account savedaccount = accountRepository.save(account);
-				return savedaccount;
-			}
-			
+		Customer customer = customerService.getCustomerByUserId(userId);
+
+		if(customer!=null) {
+			account.setCustomer(customer);
+			Account savedaccount = accountRepository.save(account);
+			return savedaccount;
 		}
+			
+
 		return null;
-		
 	}
+
 
 	@Override
 	public void updateAccount(Account account, long id) {
@@ -54,8 +59,52 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
-	public Optional<Account> getById(long id) {
-		return accountRepository.findById(id);
+	public List<Account> getAccountByUserId(long id) {
+
+	Customer customer = customerService.getCustomerByUserId(id+"");
+	if(customer!=null) {
+		return accountRepository.findAcctByCustId(customer.getId()+"");
+	}
+
+	return null;
+		
+	}
+
+	@Override
+	public void deposit(long accountId, double amount) {
+		Optional<Account> findById = accountRepository.findById(accountId);
+		if(findById.isPresent()) {
+			Account account = findById.get();
+			account.setBalance(account.getBalance()+amount);
+			accountRepository.save(account);
+			transaction.setDate(new Date());
+//			transaction.setDescription(account.g);
+			transaction.setCustomerId(account.getCustomer().getId()+"");
+			transaction.setAccountId(account.getId());
+			transaction.setType(account.getTypes());
+			transaction.setAmount("+"+Double.toString (amount));
+			transaction.setBalance(Double.toString (account.getBalance()));
+			transactionRepository.save(transaction);
+		}
+	}
+
+	@Override
+	public void withdrawl(long accountId, double amount) {
+		Optional<Account> findById = accountRepository.findById(accountId);
+		if(findById.isPresent()) {
+			Account account = findById.get();
+			account.setBalance(account.getBalance() -amount);
+			accountRepository.save(account);
+			transaction.setDate(new Date());
+//			transaction.setDescription(account.g);
+			transaction.setCustomerId(account.getCustomer().getId()+"");
+			transaction.setAccountId(account.getId());
+			transaction.setType(account.getTypes());
+			transaction.setAmount("-"+Double.toString (amount));
+			transaction.setBalance(Double.toString (account.getBalance()));
+			transactionRepository.save(transaction);
+		}
+		
 	}
 
 }

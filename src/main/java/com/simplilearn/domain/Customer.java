@@ -9,6 +9,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.*;
 
 @Entity
@@ -19,6 +22,7 @@ public class Customer {
 	private long id;
 	@OneToOne(cascade = CascadeType.REMOVE)
 	@JoinColumn(name = "userId", referencedColumnName = "id")
+	@JsonIgnoreProperties("customer")
 	private User user;
 	private String firstName;
 	private String lastName;
@@ -26,12 +30,17 @@ public class Customer {
 	private String phone;
 	private String address;
 	private String ssn;
+	
 	@OneToOne(mappedBy = "customer")
+	@JsonIgnoreProperties("customer")
 	private ChequeBookRequest chequeBookRequest;
+	
 	@OneToOne(mappedBy = "customer")
+	@JsonIgnoreProperties("customer")
 	private Recipents recipents;
 	
 	@OneToMany(mappedBy="customer")
+	@JsonIgnoreProperties("customer")
 	private List<Account> accounts;
 	
 	public Customer() {

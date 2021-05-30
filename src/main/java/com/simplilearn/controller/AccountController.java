@@ -1,9 +1,6 @@
 package com.simplilearn.controller;
 
-import java.util.Date;
 import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.simplilearn.domain.Account;
 import com.simplilearn.service.AccountService;
 
@@ -24,35 +20,52 @@ public class AccountController {
 
 
 	@RequestMapping(path = "/addaccount/{userId}", method = RequestMethod.POST)
-	public Account save(@PathVariable("userId") String userId,  @RequestBody Account account){
-
-//		account.setCustomer(null);
-		
+	public Account save(@PathVariable("userId") String userId,  @RequestBody Account account){		
 		return accountService.save(account, userId);
 		
 	}
+	
+	@GetMapping("/accountsByUserId/{id}") 
+	public List<Account> getAccountByUserId(@PathVariable("id") long id){
+		return accountService.getAccountByUserId(id);
+	}
+	
+	@GetMapping("/deposit/{accountId}/{amount}")
+	public void deposit(@PathVariable("accountId") String accountId, @PathVariable("amount") String amount) {
+		
+		accountService.deposit(Long.parseLong(accountId), Double.parseDouble(amount));
+	}
+	@GetMapping("/withdrawl/{accountId}/{amount}")
+	public void withdrawl(@PathVariable("accountId") String accountId, @PathVariable("amount") String amount) {
+		
+		accountService.withdrawl(Long.parseLong(accountId), Double.parseDouble(amount));
+	}
+	
+	
+	
+	
+	//not used
+	
 	@RequestMapping(path = "/account/{id}",method = RequestMethod.DELETE)
 	public void deleteAccount(@PathVariable("id") long id)   
 	{  
 		accountService.deleteAccount(id);  
 	}  
 	@RequestMapping(path = "/updateaccount",method = RequestMethod.PUT)
-
 	public Account update(@RequestBody Account account, long id)   
 	{  
 		accountService.updateAccount(account, id); 
 	return account;  
 	} 
-	@GetMapping("/account/{id}")  
-	public Optional<Account> getAccountById(@PathVariable("id") long id)   
-	{  
-	return accountService.getById(id);  
-	}  
+	 
+ 
 	@GetMapping("/accounts")  
 	public List<Account> getAllAccount(@PathVariable("id") long id)   
 	{  
 	return accountService.findAll(); 
 	}  
+	
+	
 
 
 }
