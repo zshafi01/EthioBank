@@ -23,7 +23,6 @@ public class Account {
 	private String accountNumber;
 	private String accountTypes;
 	private String types;
-	private String description;
 
 	private double balance;
 	private Date date;
@@ -38,14 +37,13 @@ public class Account {
 		super();
 	}
 
-	public Account(long id, String accountNumber, String accountTypes, String types, String description, double balance,
+	public Account(long id, String accountNumber, String accountTypes, String types, double balance,
 			Date date, ChequeBookRequest chequeBookRequest, Customer customer) {
 		super();
 		this.id = id;
 		this.accountNumber = accountNumber;
 		this.accountTypes = accountTypes;
 		this.types = types;
-		this.description = description;
 		this.balance = balance;
 		this.date = date;
 		this.chequeBookRequest = chequeBookRequest;
@@ -84,14 +82,7 @@ public class Account {
 		this.types = types;
 	}
 
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
+	
 	public double getBalance() {
 		return balance;
 	}

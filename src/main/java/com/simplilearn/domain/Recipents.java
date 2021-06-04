@@ -5,8 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -15,53 +13,58 @@ public class Recipents {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	@OneToOne
-	@JoinColumn(name="account_id",referencedColumnName = "id")
-	private Account account;
 	
-	@OneToOne
-    @JoinColumn(name = "customer_id", referencedColumnName = "id")
-	private Customer customer;
+	private long userId;
 	
-	public Recipents() {
-		super();
-	}
+	private long accountId;
+	
+	private String email;
+	private String phone;
 	
 	
 
-	public Recipents(long id, Account account, Customer customer) {
-		super();
-		this.id = id;
-		this.account = account;
-		this.customer = customer;
+	public String getEmail() {
+		return email;
 	}
 
-
-
-	public Customer getCustomer() {
-		return customer;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
-
-
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
+	public String getPhone() {
+		return phone;
 	}
 
-
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
 
 	public long getId() {
 		return id;
 	}
+
 	public void setId(long id) {
 		this.id = id;
 	}
-	public Account getAccount() {
-		return account;
+
+	public long getUserId() {
+		return userId;
 	}
-	public void setAccount(Account account) {
-		this.account = account;
+
+	public void setUserId(long userId) {
+		this.userId = userId;
 	}
+
+	public long getAccountId() {
+		return accountId;
+	}
+
+	public void setAccountId(long accountId) {
+		this.accountId = accountId;
+	}
+	
+	
+	
 	
 	
 

@@ -7,9 +7,10 @@ import com.simplilearn.domain.Recipents;
 
 public interface RecipentsService {
 	List<Recipents> findAll();
-	List<Recipents> save(Recipents recipents);
+	String save(Recipents recipents, long userId);
 	void updateRecipents(Recipents recipents, long id);
 	void deleteRecipents(long id);
 	public Optional<Recipents> getById(long id);
+	List<Recipents> getByUserId(long id);
 
 }

@@ -14,11 +14,9 @@ public class ChequeBookRequest {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
 	@OneToOne
     @JoinColumn(name = "customer_id", referencedColumnName = "id")
 	private Customer customer;
-	
 	@OneToOne
     @JoinColumn(name = "account_id", referencedColumnName = "id")
 	private Account account;

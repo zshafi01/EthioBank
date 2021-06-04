@@ -14,4 +14,6 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
 	@Query(value = "SELECT * FROM ethiobankdb.customer where user_id=:userId",nativeQuery = true)
 	List<Customer> findByUserId(@Param("userId") String userId);
 
+	Customer findByPhone(String phone);
+
 }

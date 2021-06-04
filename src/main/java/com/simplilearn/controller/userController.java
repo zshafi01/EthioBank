@@ -44,6 +44,11 @@ public class userController {
 	
 	
 	
+	
+	
+	
+	
+	
 	@RequestMapping(path = "/user/{id}",method = RequestMethod.DELETE)
 	public void deleteUser(@PathVariable("id") long id)   
 	{  

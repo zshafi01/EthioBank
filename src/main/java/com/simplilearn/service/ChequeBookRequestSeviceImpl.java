@@ -20,10 +20,9 @@ public class ChequeBookRequestSeviceImpl implements ChequeBookRequestSevice {
 	}
 
 	@Override
-	public List<ChequeBookRequest> save(ChequeBookRequest chequeBookRequest) {
-		chequeBookRequestRepository.save(chequeBookRequest);
+	public ChequeBookRequest save(ChequeBookRequest chequeBookRequest) {
+		return chequeBookRequestRepository.save(chequeBookRequest);
 		
-		return findAll();
 	}
 
 	@Override

@@ -30,16 +30,10 @@ public class Customer {
 	private String phone;
 	private String address;
 	private String ssn;
-	
 	@OneToOne(mappedBy = "customer")
 	@JsonIgnoreProperties("customer")
 	private ChequeBookRequest chequeBookRequest;
-	
-	@OneToOne(mappedBy = "customer")
-	@JsonIgnoreProperties("customer")
-	private Recipents recipents;
-	
-	@OneToMany(mappedBy="customer")
+	@OneToMany(mappedBy="customer",cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("customer")
 	private List<Account> accounts;
 	
@@ -48,7 +42,7 @@ public class Customer {
 	}
 
 	public Customer(long id, User user, String firstName, String lastName, String email, String phone, String address,
-			String ssn, ChequeBookRequest chequeBookRequest, Recipents recipents, List<Account> accounts) {
+			String ssn, ChequeBookRequest chequeBookRequest, List<Account> accounts) {
 		super();
 		this.id = id;
 		this.user = user;
@@ -59,7 +53,6 @@ public class Customer {
 		this.address = address;
 		this.ssn = ssn;
 		this.chequeBookRequest = chequeBookRequest;
-		this.recipents = recipents;
 		this.accounts = accounts;
 	}
 
@@ -135,13 +128,6 @@ public class Customer {
 		this.chequeBookRequest = chequeBookRequest;
 	}
 
-	public Recipents getRecipents() {
-		return recipents;
-	}
-
-	public void setRecipents(Recipents recipents) {
-		this.recipents = recipents;
-	}
 
 	public List<Account> getAccounts() {
 		return accounts;

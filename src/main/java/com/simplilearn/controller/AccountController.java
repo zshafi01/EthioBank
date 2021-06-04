@@ -41,7 +41,10 @@ public class AccountController {
 		accountService.withdrawl(Long.parseLong(accountId), Double.parseDouble(amount));
 	}
 	
-	
+	@GetMapping("/listofaccounts")  
+	public List<Account> listofaccounts(){  
+	return accountService.findAll(); 
+	} 
 	
 	
 	//not used
@@ -59,11 +62,7 @@ public class AccountController {
 	} 
 	 
  
-	@GetMapping("/accounts")  
-	public List<Account> getAllAccount(@PathVariable("id") long id)   
-	{  
-	return accountService.findAll(); 
-	}  
+ 
 	
 	
 

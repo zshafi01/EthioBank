@@ -23,11 +23,11 @@ public class AccountServiceImpl implements AccountService {
 	@Autowired
 	private TransactionRepository transactionRepository;
 	
-	Transaction  transaction = new Transaction();
+	
 
 	@Override
 	public List<Account> findAll() {
-		return (List<Account>) accountRepository.findAll();
+		return (List<Account>) accountRepository.findAllCustome();
 	}
 
 	@Override
@@ -72,13 +72,13 @@ public class AccountServiceImpl implements AccountService {
 
 	@Override
 	public void deposit(long accountId, double amount) {
+		Transaction  transaction = new Transaction();
 		Optional<Account> findById = accountRepository.findById(accountId);
 		if(findById.isPresent()) {
 			Account account = findById.get();
 			account.setBalance(account.getBalance()+amount);
 			accountRepository.save(account);
 			transaction.setDate(new Date());
-			transaction.setDescription(account.getDescription());
 			transaction.setCustomerId(account.getCustomer().getId()+"");
 			transaction.setAccountId(account.getId());
 			transaction.setType(account.getTypes());
@@ -100,13 +100,15 @@ public class AccountServiceImpl implements AccountService {
 
 	@Override
 	public void withdrawl(long accountId, double amount) {
+		Transaction  transaction = new Transaction();
 		Optional<Account> findById = accountRepository.findById(accountId);
 		if(findById.isPresent()) {
 			Account account = findById.get();
 			account.setBalance(account.getBalance()- amount);
 			accountRepository.save(account);
 			transaction.setDate(new Date());
-			transaction.setDescription(account.getDescription());
+//			transaction.setDescription(account.getDescription());
+
 			transaction.setCustomerId(account.getCustomer().getId()+"");
 			transaction.setAccountId(account.getId());
 			transaction.setType(account.getTypes());

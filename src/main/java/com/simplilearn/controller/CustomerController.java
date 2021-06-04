@@ -34,8 +34,12 @@ public class CustomerController {
 	return customerService.getCustomerByUserId(userId+"");  
 	}
 	
-	
-	
+	@GetMapping("/listofcustomers")  
+	public List<Customer> listofcustomers(){
+		return customerService.findAll();
+		
+			}
+
 	
 	//not used
 	@GetMapping("/customer/{id}")  
@@ -53,12 +57,12 @@ public class CustomerController {
 	{  
 	customerService.deletecustomer(id);  
 	}  
+	
 	@RequestMapping(path = "/updatecustomers",method = RequestMethod.PUT)
-
 	public Customer update(@RequestBody Customer customer, long id)   
 	{  
-		customerService.updatecustomer(customer, id); 
-	return customer;  
+		customerService.updatecustomer(customer, id);
+		return customer;  
 	} 
 	
 

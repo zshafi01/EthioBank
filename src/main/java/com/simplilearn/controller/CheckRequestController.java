@@ -22,9 +22,9 @@ public class CheckRequestController {
 	private ChequeBookRequestSevice chequeBookRequestSevice;
 
 	@RequestMapping(path = "/addcheckreq", method = RequestMethod.POST)
-	public List<ChequeBookRequest> save(@RequestBody ChequeBookRequest chequeBookRequest){
+	public ChequeBookRequest save(@RequestBody ChequeBookRequest chequeBookRequest){
 		
-		return chequeBookRequestSevice.save(chequeBookRequest);
+		 return chequeBookRequestSevice.save(chequeBookRequest);
 		
 	}
 	@RequestMapping(path = "/chequeBookRequest/{id}",method = RequestMethod.DELETE)
@@ -44,6 +44,7 @@ public class CheckRequestController {
 	{  
 	return chequeBookRequestSevice.getById(id);  
 	}  
+	
 	@GetMapping("/chequeBookRequests")  
 	public List<ChequeBookRequest> getAllCustomer(@PathVariable("id") long id)   
 	{  

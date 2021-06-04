@@ -21,12 +21,24 @@ public class RecipientController {
 	
 	@Autowired
 	private RecipentsService recipentsService;
-	@RequestMapping(path = "/addrecipents", method = RequestMethod.POST)
-	public List<Recipents> save(@RequestBody Recipents recipents){
+	
+	@RequestMapping(path = "/addrecipients/{userId}", method = RequestMethod.POST)
+	public String save(@RequestBody Recipents recipents, @PathVariable("userId") long userId){
 		
-		return recipentsService.save(recipents);
+		return recipentsService.save(recipents,userId);
 		
 	}
+	
+	@GetMapping("/recipentsByUserId/{userId}")  
+	public List<Recipents> getRecipentsByUserId(@PathVariable("userId") long id)   
+	{  
+	return recipentsService.getByUserId(id);
+	} 
+	
+	
+	
+	
+	//unused
 	@RequestMapping(path = "/recipents/{id}",method = RequestMethod.DELETE)
 	public void deleteRecipents(@PathVariable("id") long id)   
 	{  

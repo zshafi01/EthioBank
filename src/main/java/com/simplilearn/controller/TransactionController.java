@@ -19,7 +19,6 @@ public class TransactionController {
 	
 	@GetMapping(path = "/listoftransaction/{userId}")
 	public List<Transaction> getTransactionByCustomerId(@PathVariable("userId") long userId){
-		System.out.println("....logstart.....");
 		return transactionService.gettransactionbyuserid(userId);
 	}
 }
