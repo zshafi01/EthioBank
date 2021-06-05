@@ -36,7 +36,7 @@ public class AccountController {
 		accountService.deposit(Long.parseLong(accountId), Double.parseDouble(amount));
 	}
 	@GetMapping("/withdrawl/{accountId}/{amount}")
-	public void withdrawl(@PathVariable("accountId") String accountId, @PathVariable("amount") String amount) {
+	public void withdrawl(@PathVariable("accountId") String accountId, @PathVariable("amount") String amount) throws Exception {
 		
 		accountService.withdrawl(Long.parseLong(accountId), Double.parseDouble(amount));
 	}

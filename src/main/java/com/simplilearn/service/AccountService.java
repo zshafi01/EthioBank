@@ -11,6 +11,6 @@ public interface AccountService {
 	void deleteAccount(long id);
 	public List<Account> getAccountByUserId(long id);
 	void deposit(long l, double amount);
-	void withdrawl(long l, double amount);
+	void withdrawl(long l, double amount) throws Exception;
 	
 }

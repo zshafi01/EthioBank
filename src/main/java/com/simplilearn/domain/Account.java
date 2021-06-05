@@ -11,6 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -25,6 +27,7 @@ public class Account {
 	private String types;
 
 	private double balance;
+    @DateTimeFormat(pattern = "MM/dd/yyyy")
 	private Date date;
 	@OneToOne(mappedBy = "account")
 	ChequeBookRequest chequeBookRequest;

@@ -99,22 +99,28 @@ public class AccountServiceImpl implements AccountService {
 	
 
 	@Override
-	public void withdrawl(long accountId, double amount) {
+	public void withdrawl(long accountId, double amount) throws Exception {
 		Transaction  transaction = new Transaction();
 		Optional<Account> findById = accountRepository.findById(accountId);
 		if(findById.isPresent()) {
 			Account account = findById.get();
-			account.setBalance(account.getBalance()- amount);
-			accountRepository.save(account);
-			transaction.setDate(new Date());
-//			transaction.setDescription(account.getDescription());
+			if((account.getBalance()- amount)>=0) {
+				account.setBalance(account.getBalance()- amount);
+				accountRepository.save(account);
+				transaction.setDate(account.getDate());
+//				transaction.setDescription(account.getDescription());
 
-			transaction.setCustomerId(account.getCustomer().getId()+"");
-			transaction.setAccountId(account.getId());
-			transaction.setType(account.getTypes());
-			transaction.setAmount("-"+ Double.toString (amount));
-			transaction.setBalance(Double.toString (account.getBalance()));
-			transactionRepository.save(transaction);
+				transaction.setCustomerId(account.getCustomer().getId()+"");
+				transaction.setAccountId(account.getId());
+				transaction.setType(account.getTypes());
+				transaction.setAmount("-"+ Double.toString (amount));
+				transaction.setBalance(Double.toString (account.getBalance()));
+				transactionRepository.save(transaction);
+			} else {
+				throw new Exception("Inseficient fund");
+			}
+			
+			
 		}
 		
 	}

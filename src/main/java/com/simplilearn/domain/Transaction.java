@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table
 public class Transaction {
@@ -16,22 +18,21 @@ public class Transaction {
 	private long id;
 	private String customerId;
 	private long accountId;
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date date;
-	private String description;
 	private String type;
 	private String amount;
 	private String balance;
 	public Transaction() {
 		super();
 	}
-	public Transaction(long id, String customerId, long accountId, Date date, String description, String type,
+	public Transaction(long id, String customerId, long accountId, Date date, String type,
 			String amount, String balance) {
 		super();
 		this.id = id;
 		this.customerId = customerId;
 		this.accountId = accountId;
 		this.date = date;
-		this.description = description;
 		this.type = type;
 		this.amount = amount;
 		this.balance = balance;
@@ -60,12 +61,7 @@ public class Transaction {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
-	}
+
 	public String getType() {
 		return type;
 	}
