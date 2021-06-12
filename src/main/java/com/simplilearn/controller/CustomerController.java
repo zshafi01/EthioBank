@@ -16,7 +16,8 @@ import com.simplilearn.domain.Customer;
 import com.simplilearn.service.CustomerService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin
 public class CustomerController {
 	@Autowired
 	private CustomerService customerService;
@@ -58,11 +59,10 @@ public class CustomerController {
 	customerService.deletecustomer(id);  
 	}  
 	
-	@RequestMapping(path = "/updatecustomers",method = RequestMethod.PUT)
-	public Customer update(@RequestBody Customer customer, long id)   
+	@RequestMapping(path = "/updatecustomers/{id}",method = RequestMethod.PUT)
+	public Customer update(@PathVariable("id") long id, @RequestBody Customer customer)   
 	{  
-		customerService.updatecustomer(customer, id);
-		return customer;  
+		return customerService.updatecustomer(customer, id); 
 	} 
 	
 

@@ -51,8 +51,19 @@ public class CustomerServiceImp implements CustomerService {
 	}
 
 	@Override
-	public void updatecustomer(Customer customer, long id) {
-		customerRepository.save(customer);
+	public Customer updatecustomer(Customer customer, long id) {
+		Customer customerByUserId = this.getCustomerByUserId(id+"");
+		if(customerByUserId!=null) {
+			customerByUserId.setAddress(customer.getAddress());
+			customerByUserId.setEmail(customer.getEmail());
+			customerByUserId.setFirstName(customer.getFirstName());
+			customerByUserId.setLastName(customer.getLastName());
+			customerByUserId.setPhone(customer.getPhone());
+			customerByUserId.setSsn(customer.getSsn());
+			return customerRepository.save(customerByUserId);
+		}
+		return null;
+		
 	}
 
 	@Override
@@ -74,5 +85,6 @@ public class CustomerServiceImp implements CustomerService {
 		}
 		return null;
 	}
+	
 
 }

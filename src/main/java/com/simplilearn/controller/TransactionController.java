@@ -11,7 +11,9 @@ import com.simplilearn.domain.Transaction;
 import com.simplilearn.service.TransactionService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin
+
 public class TransactionController {
 	
 	@Autowired

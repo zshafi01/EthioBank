@@ -7,7 +7,7 @@ import com.simplilearn.domain.Transfer;
 
 public interface TransferService {
 	List<Transfer> findAll();
-	Transfer save(Transfer transfer, String userId);
+	Transfer save(Transfer transfer, String userId) throws Exception;
 	void updateTransfer(Transfer transfer, long id);
 	void deleteTransfer(long id);
 	public Optional<Transfer> getById(long id);

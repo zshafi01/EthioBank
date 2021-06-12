@@ -13,7 +13,8 @@ import com.simplilearn.domain.Account;
 import com.simplilearn.service.AccountService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin
 public class AccountController {
 	@Autowired
 	private AccountService accountService;

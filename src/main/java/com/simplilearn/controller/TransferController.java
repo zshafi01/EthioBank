@@ -16,14 +16,14 @@ import com.simplilearn.domain.Transfer;
 import com.simplilearn.service.TransferService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
-
+//@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin
 public class TransferController {
 	
 	@Autowired
 	private TransferService transferService;
 	@RequestMapping(path = "/addtransfer/{userId}", method = RequestMethod.POST)
-	public Transfer save(@PathVariable("userId") String userId,  @RequestBody Transfer transfer){
+	public Transfer save(@PathVariable("userId") String userId,  @RequestBody Transfer transfer) throws Exception{
 		
 		return transferService.save(transfer, userId);
 	

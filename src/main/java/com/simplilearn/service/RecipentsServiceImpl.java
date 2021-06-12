@@ -24,7 +24,7 @@ public class RecipentsServiceImpl implements RecipentsService {
 	@Autowired
 	private AccountRepository accountRepository;
 	
-
+	
 	@Override
 	public String save(Recipents recipents, long userId) {
 		

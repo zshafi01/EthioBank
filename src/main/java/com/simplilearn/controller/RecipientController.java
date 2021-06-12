@@ -16,7 +16,8 @@ import com.simplilearn.domain.Recipents;
 import com.simplilearn.service.RecipentsService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin
 public class RecipientController {
 	
 	@Autowired
