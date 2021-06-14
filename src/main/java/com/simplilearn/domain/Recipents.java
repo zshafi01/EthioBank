@@ -1,6 +1,5 @@
 package com.simplilearn.domain;
 
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,32 +12,29 @@ public class Recipents {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
+
 	private String name;
 	private String nickname;
-	
+
 	private long userId;
-	
+
 	private long accountId;
-	
+
 	private String email;
 	private String phone;
-	
-	
 
-	public String getEmail() {
-		return email;
+	public Recipents() {
+		super();
 	}
 
-	public void setEmail(String email) {
+	public Recipents(long id, String name, String nickname, long userId, long accountId, String email, String phone) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.nickname = nickname;
+		this.userId = userId;
+		this.accountId = accountId;
 		this.email = email;
-	}
-
-	public String getPhone() {
-		return phone;
-	}
-
-	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 
@@ -48,6 +44,22 @@ public class Recipents {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
 
 	public long getUserId() {
@@ -66,22 +78,19 @@ public class Recipents {
 		this.accountId = accountId;
 	}
 
-	public String getName() {
-		return name;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
-	public String getNickname() {
-		return nickname;
+	public String getPhone() {
+		return phone;
 	}
 
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
-	
-	
-
 }

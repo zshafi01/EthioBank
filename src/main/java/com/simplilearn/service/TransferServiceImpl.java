@@ -19,12 +19,13 @@ public class TransferServiceImpl implements TransferService {
 	private TransferRepository transferRepository;
 	@Autowired
 	private UserService userService;
-	
+
 	@Autowired
 	private AccountService accountService;
-	
+
 	@Autowired
 	private CustomerService customerService;
+
 	@Override
 	public List<Transfer> findAll() {
 		return (List<Transfer>) transferRepository.findAll();
@@ -33,36 +34,37 @@ public class TransferServiceImpl implements TransferService {
 	@Override
 	public Transfer save(Transfer transfer, String userId) throws Exception {
 		Optional<Customer> customerOptional = customerService.getById(Long.parseLong(userId));
-		if(customerOptional.isPresent()) {
+		if (customerOptional.isPresent()) {
 			Customer savedCustomer = customerOptional.get();
-			if(savedCustomer!=null) {
+			if (savedCustomer != null) {
 				List<Account> fromAccounts = this.accountService.getAccountByUserId(Long.parseLong(userId));
-				List<Account> toAccounts = this.accountService.getAccountByUserId(Long.parseLong(transfer.getTransferTo()));
-				
+				List<Account> toAccounts = this.accountService
+						.getAccountByUserId(Long.parseLong(transfer.getTransferTo()));
+
 				Account fromAccount = fromAccounts.get(0);
 				Account toAccount = toAccounts.get(0);
-				if(fromAccount!=null && toAccount!=null) {
+				if (fromAccount != null && toAccount != null) {
 					this.accountService.withdrawl(fromAccount.getId(), transfer.getAmount());
 					this.accountService.deposit(toAccount.getId(), transfer.getAmount());
-					transfer.setCustomerid(savedCustomer.getId()+"");
+					transfer.setCustomerid(savedCustomer.getId() + "");
 					Transfer savedTransfer = transferRepository.save(transfer);
 					return savedTransfer;
 				}
-				
+
 			}
-			
+
 		}
 		return null;
 	}
 
 	@Override
 	public void updateTransfer(Transfer transfer, long id) {
-		transferRepository.save(transfer);		
+		transferRepository.save(transfer);
 	}
 
 	@Override
 	public void deleteTransfer(long id) {
-		transferRepository.deleteById(id);		
+		transferRepository.deleteById(id);
 	}
 
 	@Override

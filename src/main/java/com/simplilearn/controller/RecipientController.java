@@ -19,49 +19,40 @@ import com.simplilearn.service.RecipentsService;
 //@CrossOrigin(origins = "http://localhost:4200")
 @CrossOrigin
 public class RecipientController {
-	
+
 	@Autowired
 	private RecipentsService recipentsService;
-	
+
 	@RequestMapping(path = "/addrecipients/{userId}", method = RequestMethod.POST)
-	public String save(@RequestBody Recipents recipents, @PathVariable("userId") long userId){
-		
-		return recipentsService.save(recipents,userId);
-		
+	public String save(@RequestBody Recipents recipents, @PathVariable("userId") long userId) {
+		return recipentsService.save(recipents, userId);
 	}
-	
-	@GetMapping("/recipentsByUserId/{userId}")  
-	public List<Recipents> getRecipentsByUserId(@PathVariable("userId") long id)   
-	{  
-	return recipentsService.getByUserId(id);
-	} 
-	
-	
-	
-	
-	//unused
-	@RequestMapping(path = "/recipents/{id}",method = RequestMethod.DELETE)
-	public void deleteRecipents(@PathVariable("id") long id)   
-	{  
-		recipentsService.deleteRecipents(id);  
-	}  
-	@RequestMapping(path = "/updaterecipents",method = RequestMethod.PUT)
 
-	public Recipents update(@RequestBody Recipents recipents, long id)   
-	{  
-		recipentsService.updateRecipents(recipents, id); 
-	return recipents;  
-	} 
-	@GetMapping("/recipents/{id}")  
-	public Optional<Recipents> getRecipentsById(@PathVariable("id") long id)   
-	{  
-	return recipentsService.getById(id);  
-	}  
-	@GetMapping("/recipents")  
-	public List<Recipents> getAllRecipents(@PathVariable("id") long id)   
-	{  
-	return recipentsService.findAll();  
-	}  
+	@GetMapping("/recipentsByUserId/{userId}")
+	public List<Recipents> getRecipentsByUserId(@PathVariable("userId") long id) {
+		return recipentsService.getByUserId(id);
+	}
 
+	@RequestMapping(path = "/recipents/{id}", method = RequestMethod.DELETE)
+	public void deleteRecipents(@PathVariable("id") long id) {
+		recipentsService.deleteRecipents(id);
+	}
+
+	@RequestMapping(path = "/updaterecipents", method = RequestMethod.PUT)
+
+	public Recipents update(@RequestBody Recipents recipents, long id) {
+		recipentsService.updateRecipents(recipents, id);
+		return recipents;
+	}
+
+	@GetMapping("/recipents/{id}")
+	public Optional<Recipents> getRecipentsById(@PathVariable("id") long id) {
+		return recipentsService.getById(id);
+	}
+
+	@GetMapping("/recipents")
+	public List<Recipents> getAllRecipents(@PathVariable("id") long id) {
+		return recipentsService.findAll();
+	}
 
 }

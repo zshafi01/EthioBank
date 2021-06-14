@@ -11,8 +11,6 @@ import com.simplilearn.domain.Transaction;
 @Repository
 public interface TransactionRepository extends JpaRepository<Transaction, Long> {
 
-//	
-	
-	@Query(value = "select *from transaction where customer_id = ?1",nativeQuery = true)
+	@Query(value = "select *from transaction where customer_id = ?1", nativeQuery = true)
 	List<Transaction> getTransactionByCustomerId(long userid);
 }

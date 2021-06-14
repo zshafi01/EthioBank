@@ -16,11 +16,8 @@ public class User {
 	private String email;
 	private String password;
 	private String role;
-	
 	@OneToOne(mappedBy = "user")
 	private Customer customer;
-	
-	
 	
 	public User() {
 		super();
@@ -64,6 +61,4 @@ public class User {
 	public void setRole(String role) {
 		this.role = role;
 	}
-	
-	
 }

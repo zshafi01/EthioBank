@@ -16,7 +16,6 @@ import com.simplilearn.domain.Customer;
 import com.simplilearn.service.CustomerService;
 
 @RestController
-//@CrossOrigin(origins = "http://localhost:4200")
 @CrossOrigin
 public class CustomerController {
 	@Autowired
@@ -24,10 +23,8 @@ public class CustomerController {
 
 	@RequestMapping(path = "/addcustomer/{userId}", method = RequestMethod.POST)
 	public Customer save(@PathVariable("userId") String userId,  @RequestBody Customer customer){
-		
-		return customerService.save(customer,userId);
-		
-	}
+				return customerService.save(customer,userId);
+			}
 	
 	@GetMapping("/customerUserId/{userId}")  
 	public Customer getCustomerByUserId(@PathVariable("userId") long userId)   
@@ -38,11 +35,7 @@ public class CustomerController {
 	@GetMapping("/listofcustomers")  
 	public List<Customer> listofcustomers(){
 		return customerService.findAll();
-		
-			}
-
-	
-	//not used
+	}
 	@GetMapping("/customer/{id}")  
 	public Optional<Customer> getCustomerById(@PathVariable("id") long id)   
 	{  

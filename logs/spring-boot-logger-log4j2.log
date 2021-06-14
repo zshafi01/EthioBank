@@ -1,1 +1,19 @@
-2021-06-12 10:41:19,565 WARN c.z.h.p.HikariPool$HouseKeeper [HikariPool-1 housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=10h51m44s63ms704µs500ns).
+2021-06-14 13:57:43,734 INFO o.s.b.StartupInfoLogger [main] Starting EthioBankApplication using Java 15.0.2 on DESKTOP-T16AJK5 with PID 8524 (C:\Users\biliy\Documents\workspace-spring-tool-suite-4-4.10.0.RELEASE\EthioBank\target\classes started by biliy in C:\Users\biliy\Documents\workspace-spring-tool-suite-4-4.10.0.RELEASE\EthioBank)
+2021-06-14 13:57:43,747 INFO o.s.b.SpringApplication [main] No active profile set, falling back to default profiles: default
+2021-06-14 13:57:45,795 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8081"]
+2021-06-14 13:57:45,796 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2021-06-14 13:57:45,797 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.45]
+2021-06-14 13:57:45,960 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2021-06-14 13:57:46,280 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-06-14 13:57:46,366 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 5.4.30.Final
+2021-06-14 13:57:46,583 INFO o.h.a.c.r.j.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-06-14 13:57:46,735 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2021-06-14 13:57:46,741 WARN c.z.h.u.DriverDataSource [main] Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2021-06-14 13:57:47,987 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2021-06-14 13:57:48,030 INFO o.h.d.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2021-06-14 13:57:50,177 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-06-14 13:57:51,357 INFO o.a.j.l.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8081"]
+2021-06-14 13:57:51,401 INFO o.s.b.StartupInfoLogger [main] Started EthioBankApplication in 8.338 seconds (JVM running for 12.046)
+2021-06-14 14:29:09,535 INFO o.a.j.l.DirectJDKLog [RMI TCP Connection(34)-127.0.0.1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-06-14 14:29:23,437 INFO c.z.h.HikariDataSource [RMI TCP Connection(36)-127.0.0.1] HikariPool-1 - Shutdown initiated...
+2021-06-14 14:29:23,967 INFO c.z.h.HikariDataSource [RMI TCP Connection(36)-127.0.0.1] HikariPool-1 - Shutdown completed.

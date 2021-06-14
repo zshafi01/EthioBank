@@ -13,7 +13,6 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.util.*;
-import java.util.regex.Pattern;
 
 @Entity
 @Table
@@ -34,10 +33,10 @@ public class Customer {
 	@OneToOne(mappedBy = "customer")
 	@JsonIgnoreProperties("customer")
 	private ChequeBookRequest chequeBookRequest;
-	@OneToMany(mappedBy="customer",cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("customer")
 	private List<Account> accounts;
-	
+
 	public Customer() {
 		super();
 	}
@@ -129,7 +128,6 @@ public class Customer {
 		this.chequeBookRequest = chequeBookRequest;
 	}
 
-
 	public List<Account> getAccounts() {
 		return accounts;
 	}
@@ -138,4 +136,3 @@ public class Customer {
 		this.accounts = accounts;
 	}
 }
-	

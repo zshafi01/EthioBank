@@ -21,24 +21,10 @@ public class Transfer {
 	private String phone;
 	private Date Transferdate;
 	private String memo;
-	
-//	@OneToOne(cascade = CascadeType.REMOVE)
-//	@JoinColumn(name = "userId", referencedColumnName = "id")
-//	private User user;
-	
 	private String customerid;
-	
-	public String getCustomerid() {
-		return customerid;
-	}
-
-	public void setCustomerid(String customerid) {
-		this.customerid = customerid;
-	}
 
 	public Transfer() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Transfer(long id, String transferFrom, String transferTo, double amount, String phone, Date transferdate,
@@ -109,6 +95,12 @@ public class Transfer {
 		this.memo = memo;
 	}
 
+	public String getCustomerid() {
+		return customerid;
+	}
 
-	
+	public void setCustomerid(String customerid) {
+		this.customerid = customerid;
+	}
+
 }

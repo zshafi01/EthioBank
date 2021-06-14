@@ -16,7 +16,6 @@ import com.simplilearn.domain.ChequeBookRequest;
 import com.simplilearn.service.ChequeBookRequestSevice;
 
 @RestController
-//@CrossOrigin(origins = "http://localhost:4200")
 @CrossOrigin
 public class CheckRequestController {
 	@Autowired
@@ -26,8 +25,7 @@ public class CheckRequestController {
 	public ChequeBookRequest save(@RequestBody ChequeBookRequest chequeBookRequest){
 		
 		 return chequeBookRequestSevice.save(chequeBookRequest);
-		
-	}
+			}
 	@RequestMapping(path = "/chequeBookRequest/{id}",method = RequestMethod.DELETE)
 	public void deleteChequeBookRequest(@PathVariable("id") long id)   
 	{  

@@ -15,15 +15,13 @@ import com.simplilearn.repository.TransactionRepository;
 
 @Service
 public class AccountServiceImpl implements AccountService {
-	
+
 	@Autowired
 	private AccountRepository accountRepository;
 	@Autowired
 	private CustomerService customerService;
 	@Autowired
 	private TransactionRepository transactionRepository;
-	
-	
 
 	@Override
 	public List<Account> findAll() {
@@ -34,95 +32,80 @@ public class AccountServiceImpl implements AccountService {
 	public Account save(Account account, String userId) {
 		account.setChequeBookRequest(null);
 		account.setDate(new Date());
-		
+
 		Customer customer = customerService.getCustomerByUserId(userId);
 
-		if(customer!=null) {
+		if (customer != null) {
 			account.setCustomer(customer);
 			Account savedaccount = accountRepository.save(account);
 			return savedaccount;
 		}
-			
 
 		return null;
 	}
 
+	@Override
+	public void deposit(long accountId, double amount) {
+		Transaction transaction = new Transaction();
+		Optional<Account> findById = accountRepository.findById(accountId);
+		if (findById.isPresent()) {
+			Account account = findById.get();
+			account.setBalance(account.getBalance() + amount);
+			accountRepository.save(account);
+			transaction.setDate(new Date());
+			transaction.setCustomerId(account.getCustomer().getId() + "");
+			transaction.setAccountId(account.getId());
+			transaction.setType(account.getTypes());
+			transaction.setAmount("+" + Double.toString(amount));
+			transaction.setBalance(Double.toString(account.getBalance()));
+			transactionRepository.save(transaction);
+		}
+	}
+
+	@Override
+	public void withdrawl(long accountId, double amount) throws Exception {
+		Transaction transaction = new Transaction();
+		Optional<Account> findById = accountRepository.findById(accountId);
+		if (findById.isPresent()) {
+			Account account = findById.get();
+			if ((account.getBalance() - amount) >= 0) {
+				account.setBalance(account.getBalance() - amount);
+				accountRepository.save(account);
+				transaction.setDate(account.getDate());
+				transaction.setCustomerId(account.getCustomer().getId() + "");
+				transaction.setAccountId(account.getId());
+				transaction.setType(account.getTypes());
+				transaction.setAmount("-" + Double.toString(amount));
+				transaction.setBalance(Double.toString(account.getBalance()));
+				transactionRepository.save(transaction);
+			} else {
+				throw new Exception("Inseficient fund");
+			}
+
+		}
+
+	}
 
 	@Override
 	public void updateAccount(Account account, long id) {
-		accountRepository.save(account);		
+		accountRepository.save(account);
 	}
 
 	@Override
 	public void deleteAccount(long id) {
-		accountRepository.deleteById(id);		
+		accountRepository.deleteById(id);
 	}
 
 	@Override
 	public List<Account> getAccountByUserId(long id) {
 
-	Customer customer = customerService.getCustomerByUserId(id+"");
-	if(customer!=null) {
-		return accountRepository.findAcctByCustId(customer.getId()+"");
-	}
-
-	return null;
-		
-	}
-
-	@Override
-	public void deposit(long accountId, double amount) {
-		Transaction  transaction = new Transaction();
-		Optional<Account> findById = accountRepository.findById(accountId);
-		if(findById.isPresent()) {
-			Account account = findById.get();
-			account.setBalance(account.getBalance()+amount);
-			accountRepository.save(account);
-			transaction.setDate(new Date());
-			transaction.setCustomerId(account.getCustomer().getId()+"");
-			transaction.setAccountId(account.getId());
-			transaction.setType(account.getTypes());
-			transaction.setAmount("+"+ Double.toString (amount));
-			transaction.setBalance(Double.toString (account.getBalance()));
-			transactionRepository.save(transaction);
+		Customer customer = customerService.getCustomerByUserId(id + "");
+		if (customer != null) {
+			return accountRepository.findAcctByCustId(customer.getId() + "");
 		}
 
-//			transaction.setDate(account.new Date());
-////			transaction.setDescription(account.g);
-//			transaction.setCustomerId(account.getCustomer().getId()+"");
-//			transaction.setAccountId(account.getId());
-//			transaction.setType(account.getTypes());
-//			transaction.setAmount("+"+Double.toString (amount));
-//			transaction.setBalance(Double.toString (account.getBalance()));
-//			transactionRepository.save(transaction);
-		}
-	
+		return null;
 
-	@Override
-	public void withdrawl(long accountId, double amount) throws Exception {
-		Transaction  transaction = new Transaction();
-		Optional<Account> findById = accountRepository.findById(accountId);
-		if(findById.isPresent()) {
-			Account account = findById.get();
-			if((account.getBalance()- amount)>=0) {
-				account.setBalance(account.getBalance()- amount);
-				accountRepository.save(account);
-				transaction.setDate(account.getDate());
-//				transaction.setDescription(account.getDescription());
-
-				transaction.setCustomerId(account.getCustomer().getId()+"");
-				transaction.setAccountId(account.getId());
-				transaction.setType(account.getTypes());
-				transaction.setAmount("-"+ Double.toString (amount));
-				transaction.setBalance(Double.toString (account.getBalance()));
-				transactionRepository.save(transaction);
-			} else {
-				throw new Exception("Inseficient fund");
-			}
-			
-			
-		}
-		
 	}
 
 }

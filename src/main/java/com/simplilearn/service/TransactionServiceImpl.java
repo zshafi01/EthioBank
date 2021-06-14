@@ -10,14 +10,14 @@ import com.simplilearn.domain.Transaction;
 import com.simplilearn.repository.TransactionRepository;
 
 @Service
-public class TransactionServiceImpl implements TransactionService{
+public class TransactionServiceImpl implements TransactionService {
 	@Autowired
 	private TransactionRepository transactionRepository;
 	@Autowired
 	private CustomerService customerService;
+
 	@Override
 	public List<Transaction> findAlltransactiton() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -26,8 +26,7 @@ public class TransactionServiceImpl implements TransactionService{
 
 		Customer customer = customerService.getCustomerByUserId(userid + "");
 		List<Transaction> listoftransactions = transactionRepository.getTransactionByCustomerId(customer.getId());
-        return listoftransactions;
+		return listoftransactions;
 	}
-	
-	
+
 }

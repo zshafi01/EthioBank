@@ -29,27 +29,12 @@ public class userController {
 		return userService.save(user);
 		
 	}
-//	@RequestMapping(path = "/login", method = RequestMethod.POST,produces = { "application/json" })
-//	public User login(@RequestBody User user){
-//		
-//		 User verifyUser = userService.verifyUser(user);
-//		 return verifyUser;
-//		
-//	}
-	
+
 	@RequestMapping(path = "/login", method = RequestMethod.POST)
 	public User login(@RequestBody User user){
 		 return userService.verifyUser(user);
 		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 	@RequestMapping(path = "/user/{id}",method = RequestMethod.DELETE)
 	public void deleteUser(@PathVariable("id") long id)   
 	{  
